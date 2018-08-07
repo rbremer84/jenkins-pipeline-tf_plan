@@ -24,6 +24,7 @@ pipeline {
         stage('tf plan') {
             steps {               
                 sh 'ansible-playbook -i playbooks/hosts playbooks/plan_ec2.yml'
+                sh 'aws s3 cp tf_scripts/ec2.plan s3://rbremer-temp/'
             }
         }     
     }
